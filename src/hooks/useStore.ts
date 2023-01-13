@@ -59,6 +59,7 @@ const useStore = <T extends Record<string, any>>(name: string, value?: T) => {
         selfRef.current.modify = true;
         fn(state);
         selfRef.current.modify = false;
+        // TODO 浅比较状态是否更新
         [..._listenerMap.values()].map(update => update(pre => pre + 1));
       }
     };
