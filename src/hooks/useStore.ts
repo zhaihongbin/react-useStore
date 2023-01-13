@@ -50,7 +50,7 @@ const useStore = <T extends Record<string, any>>(name: string, value?: T) => {
         if (selfRef.current.modify) {
           return Reflect.set(target, propKey, value, receiver);
         }
-        return false;
+        throw new Error('Only setState funtion can be used to update state!');
       }
     });
     return {
